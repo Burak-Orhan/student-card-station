@@ -16,7 +16,7 @@ namespace student_card_station
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new studentCard());
+            Application.Run(new authLogin());
         }
     }
 }

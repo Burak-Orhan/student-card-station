@@ -27,6 +27,8 @@ namespace student_card_station.Helper
                         CREATE TABLE IF NOT EXISTS students (
                             id INT AUTO_INCREMENT PRIMARY KEY,
                             name VARCHAR(100) NOT NULL,
+                            surname VARCHAR(100) NOT NULL,
+                            department VARCHAR(100) NOT NULL,
                             email VARCHAR(100) NOT NULL UNIQUE,
                             created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
                     );";
@@ -57,15 +59,32 @@ namespace student_card_station.Helper
                         ('Tıbbi Dokümantasyon ve Sekreterlik')
                     ";
 
+                    string createMigrationsTable = @"
+                        CREATE TABLE IF NOT EXISTS migrations (
+                            id INT AUTO_INCREMENT PRIMARY KEY,
+                            migration VARCHAR(255) NOT NULL,
+                            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+                    );";
+
                     MySqlCommand cmdUsers = new MySqlCommand(createUsersTable, conn);
                     MySqlCommand cmdStudents = new MySqlCommand(createStudentsTable, conn);
                     MySqlCommand cmdLessions = new MySqlCommand(createLessionsTable, conn);
                     MySqlCommand cmdLessionsInsert = new MySqlCommand(insertLessons, conn);
+                    MySqlCommand cmdMigrations = new MySqlCommand(createMigrationsTable, conn);
 
+                    cmdMigrations.ExecuteNonQuery();
                     cmdUsers.ExecuteNonQuery();
                     cmdStudents.ExecuteNonQuery();
                     cmdLessions.ExecuteNonQuery();
-                    cmdLessionsInsert.ExecuteNonQuery();
+
+                    using (var checkCmd = new MySqlCommand("SELECT COUNT(*) FROM lessons", conn))
+                    {
+                        var count = Convert.ToInt32(checkCmd.ExecuteScalar());
+                        if (count == 0)
+                        {
+                            cmdLessionsInsert.ExecuteNonQuery();
+                        }
+                    }
                 }
                 catch (Exception ex)
                 {

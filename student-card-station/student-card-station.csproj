@@ -153,6 +153,9 @@
     <EmbeddedResource Include="studentCard.resx">
       <DependentUpon>studentCard.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="studentCreate.resx">
+      <DependentUpon>studentCreate.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

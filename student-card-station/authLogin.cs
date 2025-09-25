@@ -17,11 +17,13 @@ namespace student_card_station
     public partial class authLogin : Form
     {
         private DBConnection db;
+        private DBTable dbTable;
 
         public authLogin()
         {
             InitializeComponent();
             db = new DBConnection();
+            dbTable = new DBTable();
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
@@ -67,6 +69,11 @@ namespace student_card_station
             var registerForm = new authRegister();
             registerForm.Closed += (s, args) => this.Close();
             registerForm.Show();
+        }
+
+        private void authLogin_Load(object sender, EventArgs e)
+        {
+            dbTable.CreateTables();
         }
     }
 }

@@ -104,6 +104,7 @@
             this.Name = "authLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Auth";
+            this.Load += new System.EventHandler(this.authLogin_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

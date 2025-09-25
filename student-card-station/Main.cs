@@ -1,37 +1,31 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using student_card_station.Helper;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Printing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using MySql.Data.MySqlClient;
-using student_card_station.Helper;
 
 namespace student_card_station
 {
     public partial class Main : Form
     {
         private DBConnection db;
-        private DBTable dbTable;
-
         public int userId;
 
         public Main()
         {
             InitializeComponent();
             db = new DBConnection();
-            dbTable = new DBTable();
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            dbTable.CreateTables();
-
-            MessageBox.Show($"User ID: {userId}");
-
             using (var conn = db.GetConnection())
             {
                 try
@@ -41,13 +35,22 @@ namespace student_card_station
 
                     using (var cmd = new MySqlCommand(query, conn))
                     {
-                        using (var reader = cmd.ExecuteReader())
+                        using (var adapter = new MySqlDataAdapter(cmd))
                         {
-                            while (reader.Read())
-                            {
-                                MessageBox.Show($"ID: {reader["id"]}, Name: {reader["name"]}");
-                            }
+                            DataTable dt = new DataTable();
+                            adapter.Fill(dt);
+                            dataGridView.DataSource = dt;
                         }
+
+                        //using (var reader = cmd.ExecuteReader())
+                        //{
+                        //    while (reader.Read())
+                        //    {
+                        //        dataGridView.DataSource = reader;
+
+                        //        MessageBox.Show($"ID: {reader["id"]}, Name: {reader["name"]}");
+                        //    }
+                        //}
                     }
                 }
                 catch (Exception ex)
@@ -56,6 +59,44 @@ namespace student_card_station
                     throw;
                 }
             }
+        }
+
+        private void btnAddNewStudent_Click(object sender, EventArgs e)
+        {
+            studentCreate studentCreate = new studentCreate();
+            studentCreate.Closed += (s, args) => this.Show();
+            dataGridView.Refresh();
+            studentCreate.Show();
+            this.Hide();
+        }
+
+        private void dataGridView_DoubleClick(object sender, EventArgs e)
+        {
+            studentCard studentCard = new studentCard();
+            studentCard.studentName = dataGridView.CurrentRow.Cells["name"].Value.ToString();
+            studentCard.studentSurname = dataGridView.CurrentRow.Cells["surname"].Value.ToString();
+            studentCard.studentDepartment = dataGridView.CurrentRow.Cells["department"].Value.ToString();
+            studentCard.studentId = Convert.ToInt32(dataGridView.CurrentRow.Cells["id"].Value);
+            studentCard.Closed += (s, args) => this.Show();
+            studentCard.ShowDialog();
+        }
+
+        private void btnDataGridViewPrint_Click(object sender, EventArgs e)
+        {
+            PrintDocument printDocument = new PrintDocument();
+            printDocument.PrintPage += new PrintPageEventHandler(printDocument_PrintPage);
+
+            PrintPreviewDialog previewDialog = new PrintPreviewDialog();
+            previewDialog.Document = printDocument;
+            previewDialog.ClientSize = new Size(800, 600);
+            previewDialog.ShowDialog();
+        }
+
+        private void printDocument_PrintPage(object sender, PrintPageEventArgs e)
+        {
+            Bitmap bm = new Bitmap(dataGridView.Width, dataGridView.Height);
+            dataGridView.DrawToBitmap(bm, new Rectangle(0, 0, dataGridView.Width, dataGridView.Height));
+            e.Graphics.DrawImage(bm, 0, 0);
         }
     }
 }

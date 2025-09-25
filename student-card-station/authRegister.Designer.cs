@@ -122,6 +122,7 @@
             this.Controls.Add(this.txtUsername);
             this.Controls.Add(this.btnRegister);
             this.Name = "authRegister";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "authRegister";
             this.ResumeLayout(false);
             this.PerformLayout();
