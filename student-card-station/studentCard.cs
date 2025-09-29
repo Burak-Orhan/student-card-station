@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Drawing.Printing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,6 +18,7 @@ namespace student_card_station
         public string studentSurname;
         public string studentDepartment;
         public int studentId;
+        public byte[] studentImg;
 
         public studentCard()
         {
@@ -29,6 +31,11 @@ namespace student_card_station
             txtSurname.Text = studentSurname;
             txtDepartment.Text = studentDepartment;
             txtNo.Text = studentId.ToString();
+
+            using (var ms = new MemoryStream(studentImg))
+            {
+                imgPicture.Image = Image.FromStream(ms);
+            }
         }
 
         private void CaptureScreen()
@@ -46,7 +53,7 @@ namespace student_card_station
 
             PrintPreviewDialog previewDialog = new PrintPreviewDialog();
             previewDialog.Document = printDocument;
-            previewDialog.ShowDialog(); // Önizleme açılır
+            previewDialog.ShowDialog();
         }
 
         private void printDocument_PrintPage(object sender, PrintPageEventArgs e)

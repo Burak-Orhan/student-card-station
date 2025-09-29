@@ -24,6 +24,23 @@ namespace student_card_station
             db = new DBConnection();
         }
 
+        // Refresh dataGridView Event Method
+        public void LoadStudents()
+        {
+            using (var conn = db.GetConnection())
+            {
+                conn.Open();
+                string query = "SELECT * FROM students";
+                using (var cmd = new MySqlCommand(query, conn))
+                using (var adapter = new MySqlDataAdapter(cmd))
+                {
+                    DataTable dt = new DataTable();
+                    adapter.Fill(dt);
+                    dataGridView.DataSource = dt;
+                }
+            }
+        }
+
         private void Form1_Load(object sender, EventArgs e)
         {
             using (var conn = db.GetConnection())
@@ -61,17 +78,6 @@ namespace student_card_station
                             }
                         }
                     }
-
-                        //using (var reader = cmd.ExecuteReader())
-                        //{
-                        //    while (reader.Read())
-                        //    {
-                        //        dataGridView.DataSource = reader;
-
-                        //        MessageBox.Show($"ID: {reader["id"]}, Name: {reader["name"]}");
-                        //    }
-                        //}
-
                 }
                 catch (Exception ex)
                 {
@@ -86,6 +92,14 @@ namespace student_card_station
             studentCreate studentCreate = new studentCreate();
             studentCreate.Closed += (s, args) => this.Show();
             dataGridView.Refresh();
+
+            // New Student Add This Form Refresh
+            studentCreate.CreateStudent += () =>
+            {
+                LoadStudents();
+            };
+
+            studentCreate.userId = userId;
             studentCreate.Show();
             this.Hide();
         }
@@ -97,6 +111,7 @@ namespace student_card_station
             studentCard.studentSurname = dataGridView.CurrentRow.Cells["surname"].Value.ToString();
             studentCard.studentDepartment = dataGridView.CurrentRow.Cells["department"].Value.ToString();
             studentCard.studentId = Convert.ToInt32(dataGridView.CurrentRow.Cells["id"].Value);
+            studentCard.studentImg = (byte[])dataGridView.CurrentRow.Cells["image_blob"].Value;
             studentCard.Closed += (s, args) => this.Show();
             studentCard.ShowDialog();
         }

@@ -23,16 +23,7 @@ namespace student_card_station.Helper
                 {
                     conn.Open();
 
-                    string createStudentsTable = @"
-                        CREATE TABLE IF NOT EXISTS students (
-                            id INT AUTO_INCREMENT PRIMARY KEY,
-                            name VARCHAR(100) NOT NULL,
-                            surname VARCHAR(100) NOT NULL,
-                            department VARCHAR(100) NOT NULL,
-                            email VARCHAR(100) NOT NULL UNIQUE,
-                            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-                    );";
-
+                    // Table Area
                     string createUsersTable = @"
                         CREATE TABLE IF NOT EXISTS users (
                             id INT AUTO_INCREMENT PRIMARY KEY,
@@ -42,6 +33,22 @@ namespace student_card_station.Helper
                             created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
                     );";
 
+                    string createStudentsTable = @"
+                        CREATE TABLE IF NOT EXISTS students (
+                            id INT AUTO_INCREMENT PRIMARY KEY,
+                            name VARCHAR(100) NOT NULL,
+                            surname VARCHAR(100) NOT NULL,
+                            department VARCHAR(100) NOT NULL,
+                            email VARCHAR(100) NOT NULL UNIQUE,
+                            image_blob LONGBLOB,
+                            created_staff INT,
+                            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                            FOREIGN KEY (created_staff) REFERENCES users(id)
+                                    ON DELETE SET NULL 
+                                    ON UPDATE CASCADE
+                    );";
+
+
                     string createLessionsTable = @"
                         CREATE TABLE IF NOT EXISTS lessons (
                             id INT AUTO_INCREMENT PRIMARY KEY,
@@ -49,6 +56,14 @@ namespace student_card_station.Helper
                             created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
                     );";
 
+                    string createMigrationsTable = @"
+                        CREATE TABLE IF NOT EXISTS migrations (
+                            id INT AUTO_INCREMENT PRIMARY KEY,
+                            migration VARCHAR(255) NOT NULL,
+                            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+                    );";
+
+                    // Insert Area
                     string insertLessons = @"
                         INSERT INTO lessons (name) VALUES
                         ('Bilgisayar Programcılığı'),
@@ -59,18 +74,18 @@ namespace student_card_station.Helper
                         ('Tıbbi Dokümantasyon ve Sekreterlik')
                     ";
 
-                    string createMigrationsTable = @"
-                        CREATE TABLE IF NOT EXISTS migrations (
-                            id INT AUTO_INCREMENT PRIMARY KEY,
-                            migration VARCHAR(255) NOT NULL,
-                            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-                    );";
+                    string insertFakeUser = @"
+                        INSERT INTO users (username,password) VALUES
+                        ('test','test')
+                    ";
 
                     MySqlCommand cmdUsers = new MySqlCommand(createUsersTable, conn);
                     MySqlCommand cmdStudents = new MySqlCommand(createStudentsTable, conn);
                     MySqlCommand cmdLessions = new MySqlCommand(createLessionsTable, conn);
-                    MySqlCommand cmdLessionsInsert = new MySqlCommand(insertLessons, conn);
                     MySqlCommand cmdMigrations = new MySqlCommand(createMigrationsTable, conn);
+                    
+                    MySqlCommand cmdLessionsInsert = new MySqlCommand(insertLessons, conn);
+                    MySqlCommand cmdFakeUserInsert = new MySqlCommand (insertFakeUser, conn);
 
                     cmdMigrations.ExecuteNonQuery();
                     cmdUsers.ExecuteNonQuery();
@@ -83,6 +98,15 @@ namespace student_card_station.Helper
                         if (count == 0)
                         {
                             cmdLessionsInsert.ExecuteNonQuery();
+                        }
+                    }
+
+                    using (var checkCmd = new MySqlCommand("SELECT COUNT(*) FROM users", conn))
+                    {
+                        var count = Convert.ToInt32 (checkCmd.ExecuteScalar());
+                        if (count == 0)
+                        {
+                            cmdFakeUserInsert.ExecuteNonQuery();
                         }
                     }
                 }

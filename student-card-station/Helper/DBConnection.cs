@@ -17,11 +17,22 @@ namespace student_card_station.Helper
         private string password = "";
 
         private string connectionString;
-
+       
         public DBConnection()
         {
-            connectionString =
-                $"server={server};database={database};uid={uid};pwd={password};";
+            string createString = $"server={server};uid={uid};pwd={password};";
+            using (var conn = new MySqlConnection(createString)) 
+            { 
+                conn.Open();
+
+                string createDBQuery = $"CREATE DATABASE IF NOT EXISTS `{database}`;";
+
+                using (var cmd = new MySqlCommand(createDBQuery, conn))
+                {
+                    cmd.ExecuteNonQuery();
+                    connectionString = $"server={server};database={database};uid={uid};pwd={password};";
+                }
+            }
         }
 
         public MySqlConnection GetConnection()

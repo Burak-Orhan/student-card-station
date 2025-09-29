@@ -38,52 +38,58 @@
             // 
             // btnLogin
             // 
-            this.btnLogin.Location = new System.Drawing.Point(12, 127);
+            this.btnLogin.Location = new System.Drawing.Point(9, 103);
+            this.btnLogin.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(276, 37);
-            this.btnLogin.TabIndex = 0;
+            this.btnLogin.Size = new System.Drawing.Size(207, 30);
+            this.btnLogin.TabIndex = 6;
             this.btnLogin.Text = "Giriş Yap";
             this.btnLogin.UseVisualStyleBackColor = true;
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
             // txtUsername
             // 
-            this.txtUsername.Location = new System.Drawing.Point(115, 12);
+            this.txtUsername.Location = new System.Drawing.Point(86, 10);
+            this.txtUsername.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtUsername.Name = "txtUsername";
-            this.txtUsername.Size = new System.Drawing.Size(173, 22);
+            this.txtUsername.Size = new System.Drawing.Size(131, 20);
             this.txtUsername.TabIndex = 1;
             // 
             // label1
             // 
-            this.label1.Location = new System.Drawing.Point(9, 12);
+            this.label1.Location = new System.Drawing.Point(7, 10);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(100, 26);
+            this.label1.Size = new System.Drawing.Size(75, 21);
             this.label1.TabIndex = 2;
             this.label1.Text = "Kullanıcı Adı =>";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label2
             // 
-            this.label2.Location = new System.Drawing.Point(12, 58);
+            this.label2.Location = new System.Drawing.Point(9, 47);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(97, 26);
+            this.label2.Size = new System.Drawing.Size(73, 21);
             this.label2.TabIndex = 4;
             this.label2.Text = "Şifre =>";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // txtPassword
             // 
-            this.txtPassword.Location = new System.Drawing.Point(115, 62);
+            this.txtPassword.Location = new System.Drawing.Point(86, 50);
+            this.txtPassword.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Size = new System.Drawing.Size(173, 22);
+            this.txtPassword.Size = new System.Drawing.Size(131, 20);
             this.txtPassword.TabIndex = 3;
             // 
             // lnkRegister
             // 
             this.lnkRegister.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
-            this.lnkRegister.Location = new System.Drawing.Point(12, 101);
+            this.lnkRegister.Location = new System.Drawing.Point(9, 82);
+            this.lnkRegister.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lnkRegister.Name = "lnkRegister";
-            this.lnkRegister.Size = new System.Drawing.Size(276, 23);
+            this.lnkRegister.Size = new System.Drawing.Size(207, 19);
             this.lnkRegister.TabIndex = 5;
             this.lnkRegister.TabStop = true;
             this.lnkRegister.Text = "Hesap Oluşturmak İçin Tıklayın";
@@ -92,15 +98,16 @@
             // 
             // authLogin
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(304, 175);
+            this.ClientSize = new System.Drawing.Size(228, 142);
             this.Controls.Add(this.lnkRegister);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtPassword);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtUsername);
             this.Controls.Add(this.btnLogin);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "authLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Auth";

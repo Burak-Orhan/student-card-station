@@ -42,19 +42,21 @@
             // dataGridView
             // 
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView.Location = new System.Drawing.Point(12, 36);
+            this.dataGridView.Location = new System.Drawing.Point(9, 29);
+            this.dataGridView.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.RowHeadersWidth = 51;
             this.dataGridView.RowTemplate.Height = 24;
-            this.dataGridView.Size = new System.Drawing.Size(776, 345);
+            this.dataGridView.Size = new System.Drawing.Size(582, 280);
             this.dataGridView.TabIndex = 0;
             this.dataGridView.DoubleClick += new System.EventHandler(this.dataGridView_DoubleClick);
             // 
             // btnAddNewStudent
             // 
-            this.btnAddNewStudent.Location = new System.Drawing.Point(12, 387);
+            this.btnAddNewStudent.Location = new System.Drawing.Point(9, 314);
+            this.btnAddNewStudent.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnAddNewStudent.Name = "btnAddNewStudent";
-            this.btnAddNewStudent.Size = new System.Drawing.Size(170, 51);
+            this.btnAddNewStudent.Size = new System.Drawing.Size(128, 41);
             this.btnAddNewStudent.TabIndex = 1;
             this.btnAddNewStudent.Text = "Yeni Öğrenci Ekle";
             this.btnAddNewStudent.UseVisualStyleBackColor = true;
@@ -62,9 +64,10 @@
             // 
             // btnDataGridViewPrint
             // 
-            this.btnDataGridViewPrint.Location = new System.Drawing.Point(188, 387);
+            this.btnDataGridViewPrint.Location = new System.Drawing.Point(141, 314);
+            this.btnDataGridViewPrint.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnDataGridViewPrint.Name = "btnDataGridViewPrint";
-            this.btnDataGridViewPrint.Size = new System.Drawing.Size(170, 51);
+            this.btnDataGridViewPrint.Size = new System.Drawing.Size(128, 41);
             this.btnDataGridViewPrint.TabIndex = 2;
             this.btnDataGridViewPrint.Text = "Verileri Yazdır";
             this.btnDataGridViewPrint.UseVisualStyleBackColor = true;
@@ -87,33 +90,38 @@
             // 
             // lblSystemUser
             // 
-            this.lblSystemUser.Location = new System.Drawing.Point(12, 9);
+            this.lblSystemUser.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.lblSystemUser.Location = new System.Drawing.Point(9, 7);
+            this.lblSystemUser.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblSystemUser.Name = "lblSystemUser";
-            this.lblSystemUser.Size = new System.Drawing.Size(776, 24);
+            this.lblSystemUser.Size = new System.Drawing.Size(582, 20);
             this.lblSystemUser.TabIndex = 3;
             this.lblSystemUser.Text = "staffArea";
             this.lblSystemUser.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnLogOut
             // 
-            this.btnLogOut.Location = new System.Drawing.Point(618, 387);
+            this.btnLogOut.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btnLogOut.Location = new System.Drawing.Point(464, 314);
+            this.btnLogOut.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnLogOut.Name = "btnLogOut";
-            this.btnLogOut.Size = new System.Drawing.Size(170, 51);
+            this.btnLogOut.Size = new System.Drawing.Size(128, 41);
             this.btnLogOut.TabIndex = 4;
             this.btnLogOut.Text = "Oturum Sonlandır";
-            this.btnLogOut.UseVisualStyleBackColor = true;
+            this.btnLogOut.UseVisualStyleBackColor = false;
             this.btnLogOut.Click += new System.EventHandler(this.btnLogOut_Click);
             // 
             // Main
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(600, 366);
             this.Controls.Add(this.btnLogOut);
             this.Controls.Add(this.lblSystemUser);
             this.Controls.Add(this.btnDataGridViewPrint);
             this.Controls.Add(this.btnAddNewStudent);
             this.Controls.Add(this.dataGridView);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "Main";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";

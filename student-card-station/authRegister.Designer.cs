@@ -34,17 +34,18 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtUsername = new System.Windows.Forms.TextBox();
             this.btnRegister = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
             this.txtPasswordVerifly = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lnkLogin
             // 
             this.lnkLogin.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
-            this.lnkLogin.Location = new System.Drawing.Point(15, 142);
+            this.lnkLogin.Location = new System.Drawing.Point(11, 115);
+            this.lnkLogin.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lnkLogin.Name = "lnkLogin";
-            this.lnkLogin.Size = new System.Drawing.Size(276, 23);
-            this.lnkLogin.TabIndex = 11;
+            this.lnkLogin.Size = new System.Drawing.Size(207, 19);
+            this.lnkLogin.TabIndex = 12;
             this.lnkLogin.TabStop = true;
             this.lnkLogin.Text = "Giriş Yapmak İçin Tıklayın";
             this.lnkLogin.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -52,68 +53,75 @@
             // 
             // label2
             // 
-            this.label2.Location = new System.Drawing.Point(15, 50);
+            this.label2.Location = new System.Drawing.Point(11, 41);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(97, 26);
+            this.label2.Size = new System.Drawing.Size(73, 21);
             this.label2.TabIndex = 10;
             this.label2.Text = "Şifre =>";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // txtPassword
             // 
-            this.txtPassword.Location = new System.Drawing.Point(118, 54);
+            this.txtPassword.Location = new System.Drawing.Point(88, 44);
+            this.txtPassword.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Size = new System.Drawing.Size(173, 22);
+            this.txtPassword.Size = new System.Drawing.Size(131, 20);
             this.txtPassword.TabIndex = 9;
             // 
             // label1
             // 
-            this.label1.Location = new System.Drawing.Point(12, 9);
+            this.label1.Location = new System.Drawing.Point(9, 7);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(100, 26);
+            this.label1.Size = new System.Drawing.Size(75, 21);
             this.label1.TabIndex = 8;
             this.label1.Text = "Kullanıcı Adı =>";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // txtUsername
             // 
-            this.txtUsername.Location = new System.Drawing.Point(118, 9);
+            this.txtUsername.Location = new System.Drawing.Point(88, 7);
+            this.txtUsername.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtUsername.Name = "txtUsername";
-            this.txtUsername.Size = new System.Drawing.Size(173, 22);
+            this.txtUsername.Size = new System.Drawing.Size(131, 20);
             this.txtUsername.TabIndex = 7;
             // 
             // btnRegister
             // 
-            this.btnRegister.Location = new System.Drawing.Point(15, 168);
+            this.btnRegister.Location = new System.Drawing.Point(11, 136);
+            this.btnRegister.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnRegister.Name = "btnRegister";
-            this.btnRegister.Size = new System.Drawing.Size(276, 37);
+            this.btnRegister.Size = new System.Drawing.Size(207, 30);
             this.btnRegister.TabIndex = 6;
             this.btnRegister.Text = "Kayıt Ol";
             this.btnRegister.UseVisualStyleBackColor = true;
             this.btnRegister.Click += new System.EventHandler(this.btnRegister_Click);
             // 
-            // label3
-            // 
-            this.label3.Location = new System.Drawing.Point(15, 96);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(97, 26);
-            this.label3.TabIndex = 13;
-            this.label3.Text = "Şifre Tekrar =>";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
             // txtPasswordVerifly
             // 
-            this.txtPasswordVerifly.Location = new System.Drawing.Point(118, 100);
+            this.txtPasswordVerifly.Location = new System.Drawing.Point(88, 81);
+            this.txtPasswordVerifly.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtPasswordVerifly.Name = "txtPasswordVerifly";
-            this.txtPasswordVerifly.Size = new System.Drawing.Size(173, 22);
-            this.txtPasswordVerifly.TabIndex = 12;
+            this.txtPasswordVerifly.Size = new System.Drawing.Size(131, 20);
+            this.txtPasswordVerifly.TabIndex = 11;
+            // 
+            // label4
+            // 
+            this.label4.Location = new System.Drawing.Point(2, 80);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(82, 21);
+            this.label4.TabIndex = 14;
+            this.label4.Text = "Şifre Tekrar =>";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // authRegister
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(304, 221);
-            this.Controls.Add(this.label3);
+            this.ClientSize = new System.Drawing.Size(228, 180);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.txtPasswordVerifly);
             this.Controls.Add(this.lnkLogin);
             this.Controls.Add(this.label2);
@@ -121,6 +129,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtUsername);
             this.Controls.Add(this.btnRegister);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "authRegister";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "authRegister";
@@ -137,7 +146,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtUsername;
         private System.Windows.Forms.Button btnRegister;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtPasswordVerifly;
+        private System.Windows.Forms.Label label4;
     }
 }
