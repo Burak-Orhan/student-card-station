@@ -28,9 +28,9 @@ namespace student_card_station
         {
             using (var conn = db.GetConnection())
             {
+                conn.Open();
                 try
                 {
-                    conn.Open();
                     string query = "SELECT * FROM students";
 
                     using (var cmd = new MySqlCommand(query, conn))
@@ -41,6 +41,26 @@ namespace student_card_station
                             adapter.Fill(dt);
                             dataGridView.DataSource = dt;
                         }
+                    }
+
+    
+                    string userQuery = "SELECT username FROM users WHERE id = @userId";
+                    using (var cmdUser = new MySqlCommand(userQuery, conn))
+                    {
+                        cmdUser.Parameters.AddWithValue("@userId", this.userId);
+                        using (var reader = cmdUser.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                string name = reader["username"].ToString();
+                                lblSystemUser.Text = $"Sistemde ki Yetkili Kişi: ({name}) (ID: {userId})";
+                            }
+                            else
+                            {
+                                lblSystemUser.Text = "Sistemde ki Yetkili Kişiye Ulaşılamıyor";
+                            }
+                        }
+                    }
 
                         //using (var reader = cmd.ExecuteReader())
                         //{
@@ -51,7 +71,7 @@ namespace student_card_station
                         //        MessageBox.Show($"ID: {reader["id"]}, Name: {reader["name"]}");
                         //    }
                         //}
-                    }
+
                 }
                 catch (Exception ex)
                 {
@@ -97,6 +117,14 @@ namespace student_card_station
             Bitmap bm = new Bitmap(dataGridView.Width, dataGridView.Height);
             dataGridView.DrawToBitmap(bm, new Rectangle(0, 0, dataGridView.Width, dataGridView.Height));
             e.Graphics.DrawImage(bm, 0, 0);
+        }
+
+        private void btnLogOut_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var authLogin = new authLogin();
+            authLogin.Closed += (s, args) => this.Close();
+            authLogin.Show();
         }
     }
 }

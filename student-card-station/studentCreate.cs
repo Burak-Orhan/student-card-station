@@ -38,8 +38,8 @@ namespace student_card_station
                     da.Fill(dt);
 
                     cmbStudentDepartment.DataSource = dt;
-                    cmbStudentDepartment.DisplayMember = "name"; // Kullanıcıya görünen
-                    cmbStudentDepartment.ValueMember = "id";     // Arkada tutulan
+                    cmbStudentDepartment.DisplayMember = "name";
+                    cmbStudentDepartment.ValueMember = "id";
                 }
                 catch (Exception ex)
                 {
@@ -47,6 +47,12 @@ namespace student_card_station
                     throw;
                 }
             }
+        }
+
+        private void btnCreate_Click(object sender, EventArgs e)
+        {
+            string email = txtStudentName.Text + txtStudentSurname.Text + "@school.com";
+            MessageBox.Show(email);
         }
     }
 }
