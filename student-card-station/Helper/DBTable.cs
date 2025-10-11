@@ -42,8 +42,13 @@ namespace student_card_station.Helper
                             email VARCHAR(100) NOT NULL UNIQUE,
                             image_blob LONGBLOB,
                             created_staff INT,
+                            updated_staff INT,
                             created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                            updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
                             FOREIGN KEY (created_staff) REFERENCES users(id)
+                                    ON DELETE SET NULL 
+                                    ON UPDATE CASCADE,
+                            FOREIGN KEY (updated_staff) REFERENCES users(id)
                                     ON DELETE SET NULL 
                                     ON UPDATE CASCADE
                     );";
@@ -53,13 +58,6 @@ namespace student_card_station.Helper
                         CREATE TABLE IF NOT EXISTS lessons (
                             id INT AUTO_INCREMENT PRIMARY KEY,
                             name VARCHAR(100) NOT NULL,
-                            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-                    );";
-
-                    string createMigrationsTable = @"
-                        CREATE TABLE IF NOT EXISTS migrations (
-                            id INT AUTO_INCREMENT PRIMARY KEY,
-                            migration VARCHAR(255) NOT NULL,
                             created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
                     );";
 
@@ -82,12 +80,10 @@ namespace student_card_station.Helper
                     MySqlCommand cmdUsers = new MySqlCommand(createUsersTable, conn);
                     MySqlCommand cmdStudents = new MySqlCommand(createStudentsTable, conn);
                     MySqlCommand cmdLessions = new MySqlCommand(createLessionsTable, conn);
-                    MySqlCommand cmdMigrations = new MySqlCommand(createMigrationsTable, conn);
                     
                     MySqlCommand cmdLessionsInsert = new MySqlCommand(insertLessons, conn);
                     MySqlCommand cmdFakeUserInsert = new MySqlCommand (insertFakeUser, conn);
 
-                    cmdMigrations.ExecuteNonQuery();
                     cmdUsers.ExecuteNonQuery();
                     cmdStudents.ExecuteNonQuery();
                     cmdLessions.ExecuteNonQuery();

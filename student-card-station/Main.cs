@@ -60,7 +60,6 @@ namespace student_card_station
                         }
                     }
 
-    
                     string userQuery = "SELECT username FROM users WHERE id = @userId";
                     using (var cmdUser = new MySqlCommand(userQuery, conn))
                     {
@@ -126,6 +125,84 @@ namespace student_card_station
             previewDialog.ClientSize = new Size(800, 600);
             previewDialog.ShowDialog();
         }
+
+        private void btnUpdateStudent_Click(object sender, EventArgs e)
+        {
+            studentUpdate studentCardUpdate = new studentUpdate();
+            dataGridView.Refresh();
+
+            // New Student Add This Form Refresh
+            studentCardUpdate.UpdateStudent += () =>
+            {
+                LoadStudents();
+            };
+
+            studentCardUpdate.userId = this.userId;
+            studentCardUpdate.studentId = Convert.ToInt32(dataGridView.CurrentRow.Cells["id"].Value);
+            studentCardUpdate.studentName = dataGridView.CurrentRow.Cells["name"].Value.ToString();
+            studentCardUpdate.studentSurname = dataGridView.CurrentRow.Cells["surname"].Value.ToString();
+            studentCardUpdate.studentDepartment = dataGridView.CurrentRow.Cells["department"].Value.ToString();
+            studentCardUpdate.studentImg = (byte[])dataGridView.CurrentRow.Cells["image_blob"].Value;
+            studentCardUpdate.Closed += (s, args) => this.Show();
+            studentCardUpdate.ShowDialog();
+        }
+
+        private void btnDeleteStudent_Click(object sender, EventArgs e)
+        {
+            if (dataGridView.CurrentRow == null)
+            {
+                MessageBox.Show("Lütfen silmek istediğiniz öğrenciyi seçin.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            int dGVId = Convert.ToInt32(dataGridView.CurrentRow.Cells["id"].Value);
+            string dGVFullName = dataGridView.CurrentRow.Cells["name"].Value.ToString().ToUpper() + " " +
+                                 dataGridView.CurrentRow.Cells["surname"].Value.ToString().ToUpper();
+
+            DialogResult result = MessageBox.Show(
+                $"{dGVId} Numaralı, {dGVFullName} Adlı Öğrencinin Kaydını Silmek İstediğinize Emin misiniz?",
+                "Öğrenci Silme İşlemi",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning
+            );
+
+            if (result != DialogResult.Yes)
+            {
+                MessageBox.Show("Öğrenci Silme İşlemi İptal Edildi", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            using (var conn = db.GetConnection())
+            {
+                conn.Open();
+
+                try
+                {
+                    string deleteQuery = "DELETE FROM students WHERE id = @userId";
+
+                    using (var cmd = new MySqlCommand(deleteQuery, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@userId", dGVId);
+                        int affectedRows = cmd.ExecuteNonQuery();
+
+                        if (affectedRows > 0)
+                        {
+                            MessageBox.Show("Öğrenci Silme İşlemi Başarıyla Tamamlandı", "Başarılı", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            LoadStudents();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Öğrenci bulunamadı veya zaten silinmiş.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Bir hata oluştu: " + ex.Message, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
 
         private void printDocument_PrintPage(object sender, PrintPageEventArgs e)
         {

@@ -132,6 +132,12 @@
     <Compile Include="studentCreate.Designer.cs">
       <DependentUpon>studentCreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="studentUpdate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="studentUpdate.Designer.cs">
+      <DependentUpon>studentUpdate.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="authLogin.resx">
       <DependentUpon>authLogin.cs</DependentUpon>
     </EmbeddedResource>
@@ -155,6 +161,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="studentCreate.resx">
       <DependentUpon>studentCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="studentUpdate.resx">
+      <DependentUpon>studentUpdate.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

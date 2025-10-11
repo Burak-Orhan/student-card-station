@@ -43,35 +43,35 @@
             // 
             // txtStudentName
             // 
-            this.txtStudentName.Location = new System.Drawing.Point(110, 7);
-            this.txtStudentName.Margin = new System.Windows.Forms.Padding(2);
+            this.txtStudentName.Location = new System.Drawing.Point(147, 9);
+            this.txtStudentName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtStudentName.Name = "txtStudentName";
-            this.txtStudentName.Size = new System.Drawing.Size(179, 20);
+            this.txtStudentName.Size = new System.Drawing.Size(237, 22);
             this.txtStudentName.TabIndex = 0;
             // 
             // txtStudentSurname
             // 
-            this.txtStudentSurname.Location = new System.Drawing.Point(110, 41);
-            this.txtStudentSurname.Margin = new System.Windows.Forms.Padding(2);
+            this.txtStudentSurname.Location = new System.Drawing.Point(147, 50);
+            this.txtStudentSurname.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtStudentSurname.Name = "txtStudentSurname";
-            this.txtStudentSurname.Size = new System.Drawing.Size(179, 20);
+            this.txtStudentSurname.Size = new System.Drawing.Size(237, 22);
             this.txtStudentSurname.TabIndex = 1;
             // 
             // cmbStudentDepartment
             // 
             this.cmbStudentDepartment.FormattingEnabled = true;
-            this.cmbStudentDepartment.Location = new System.Drawing.Point(110, 75);
-            this.cmbStudentDepartment.Margin = new System.Windows.Forms.Padding(2);
+            this.cmbStudentDepartment.Location = new System.Drawing.Point(147, 92);
+            this.cmbStudentDepartment.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbStudentDepartment.Name = "cmbStudentDepartment";
-            this.cmbStudentDepartment.Size = new System.Drawing.Size(179, 21);
+            this.cmbStudentDepartment.Size = new System.Drawing.Size(237, 24);
             this.cmbStudentDepartment.TabIndex = 3;
             // 
             // btnCreate
             // 
-            this.btnCreate.Location = new System.Drawing.Point(12, 191);
-            this.btnCreate.Margin = new System.Windows.Forms.Padding(2);
+            this.btnCreate.Location = new System.Drawing.Point(16, 235);
+            this.btnCreate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnCreate.Name = "btnCreate";
-            this.btnCreate.Size = new System.Drawing.Size(277, 28);
+            this.btnCreate.Size = new System.Drawing.Size(369, 34);
             this.btnCreate.TabIndex = 4;
             this.btnCreate.Text = "Kaydı Tamamla";
             this.btnCreate.UseVisualStyleBackColor = true;
@@ -79,50 +79,49 @@
             // 
             // label1
             // 
-            this.label1.Location = new System.Drawing.Point(9, 9);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Location = new System.Drawing.Point(12, 11);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(96, 16);
+            this.label1.Size = new System.Drawing.Size(128, 20);
             this.label1.TabIndex = 5;
             this.label1.Text = "Öğrenci Adı:";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label2
             // 
-            this.label2.Location = new System.Drawing.Point(9, 41);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Location = new System.Drawing.Point(12, 50);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(96, 16);
+            this.label2.Size = new System.Drawing.Size(128, 20);
             this.label2.TabIndex = 6;
             this.label2.Text = "Öğrenci Soyadı:";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label3
             // 
-            this.label3.Location = new System.Drawing.Point(9, 75);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Location = new System.Drawing.Point(12, 92);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(96, 16);
+            this.label3.Size = new System.Drawing.Size(128, 20);
             this.label3.TabIndex = 7;
             this.label3.Text = "Öğrenci Bölümü:";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // imgStudentPicture
             // 
-            this.imgStudentPicture.Location = new System.Drawing.Point(308, 7);
+            this.imgStudentPicture.Location = new System.Drawing.Point(411, 9);
+            this.imgStudentPicture.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.imgStudentPicture.Name = "imgStudentPicture";
-            this.imgStudentPicture.Size = new System.Drawing.Size(179, 212);
+            this.imgStudentPicture.Size = new System.Drawing.Size(239, 261);
             this.imgStudentPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.imgStudentPicture.TabIndex = 8;
             this.imgStudentPicture.TabStop = false;
             // 
             // btnStudentAddPicture
             // 
-            this.btnStudentAddPicture.Location = new System.Drawing.Point(12, 111);
+            this.btnStudentAddPicture.Location = new System.Drawing.Point(16, 137);
+            this.btnStudentAddPicture.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnStudentAddPicture.Name = "btnStudentAddPicture";
-            this.btnStudentAddPicture.Size = new System.Drawing.Size(277, 28);
+            this.btnStudentAddPicture.Size = new System.Drawing.Size(369, 34);
             this.btnStudentAddPicture.TabIndex = 9;
-            this.btnStudentAddPicture.Text = "Öğrenci Resimi";
+            this.btnStudentAddPicture.Text = "Öğrenci Resimi Seçin";
             this.btnStudentAddPicture.UseVisualStyleBackColor = true;
             this.btnStudentAddPicture.Click += new System.EventHandler(this.btnStudentAddPicture_Click);
             // 
@@ -132,9 +131,9 @@
             // 
             // studentCreate
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(495, 226);
+            this.ClientSize = new System.Drawing.Size(660, 278);
             this.Controls.Add(this.btnStudentAddPicture);
             this.Controls.Add(this.imgStudentPicture);
             this.Controls.Add(this.label3);
@@ -144,7 +143,7 @@
             this.Controls.Add(this.cmbStudentDepartment);
             this.Controls.Add(this.txtStudentSurname);
             this.Controls.Add(this.txtStudentName);
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "studentCreate";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "studentCreate";
